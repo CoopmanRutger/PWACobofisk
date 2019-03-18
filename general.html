@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8">
+    <title>algemeen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/screen.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+            <a class="navbar-brand font-weight-bold text-white" href="general.html">Algemeen</a>
+            <button class="navbar-toggler" type="button"></button>
+
+            <a class="navbar-brand text-white" href="products.html">Producten</a>
+            <button class="navbar-toggler" type="button"></button>
+
+            <a class="navbar-brand text-white" href="orderforms.html">Bestelbonnen</a>
+            <button class="navbar-toggler" type="button"></button>
+
+            <a class="navbar-brand text-white" href="employees.html">Werknemers</a>
+            <button class="navbar-toggler" type="button"></button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<!-- 
+                <form class="form-inline my-2 my-lg-0 offset-0 offset-md-1 offset-lg-4 offset-xl-7">
+                    <input class="form-control mr-sm-2 btn" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn my-2 my-sm-0" type="submit">Search</button>
+                  </form> -->
+                  <a class="badge badge-secondary  offset-3 offset-md-3 offset-lg-11 offset-xl-11" href="index.html">logout</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="jumbotron">
+            <h1 class="display-5">Producten</h1>
+            <p class="lead">Alle producten in de winkel</p>
+            <hr class="my-2">
+            <div id="modal"></div>
+      <table class="table table-hover">
+        <thead class="bg-danger">
+          <tr>
+            <th class="text-white">nr.</th>
+            <th class="text-white">size</th>
+            <th class="text-white">Naam</th>
+            <th class="text-white">merk</th>
+            <th class="text-white">kleur</th>
+            <th class="text-white">prijs</th>
+            <th class="text-white">stock</th>
+          </tr>
+        </thead>
+        <tbody id="products">
+        </tbody>
+      </table>
+    
+                <a class="btn btn-primary btn-danger" href="products.html" role="button">meer</a>
+            </p>
+        </div>
+        <div class="jumbotron">
+            <h1 class="display-5">Toekomende artikels</h1>
+            <p class="lead">alle bestelde en goedgekeurde artikels</p>
+            <hr class="my-2">
+            <div id="modal"></div>
+      <table class="table table-hover">
+        <thead class="bg-danger">
+          <tr>
+              <th class="text-white">productId</th>
+              <th class="text-white">aantal</th>
+            <th class="text-white">datum</th>
+          </tr>
+        </thead>
+        <tbody >
+        </tbody>
+      </table>
+      
+                <a class="btn btn-primary btn-danger" href="#!" role="button">Some action</a>
+            </p>
+        </div>
+        <div class="jumbotron">
+            <h1 class="display-5">Werknemers</h1>
+            <p class="lead">Alle werknemers</p>
+            <hr class="my-2">
+            <table class="table table-hover">
+                    <thead class="bg-danger">
+                      <tr>
+                        <th class="text-white">ID</th>
+                        <th class="text-white">Naam</th>
+                        <th class="text-white">leeftijd</th>
+                        <th class="text-white">username</th>
+                        <th class="text-white">functie</th>
+                        <th class="text-white">begonnen op</th>
+                      </tr>
+                    </thead>
+                    <tbody id="employees">
+                    </tbody>
+                  </table>
+            <p>It uses utility classes for typography and
+               spacing to space content out within the larger container.</p>
+            <p class="lead">
+              <a class="btn btn-primary btn-danger" href="employees.html" role="button">meer</a>
+            </p>
+          </div>
+
+    </main>
+
+    <script src="assets/js/fetchcalls.js"></script>
+    <script src="assets/js/all.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
