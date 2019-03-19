@@ -1,13 +1,12 @@
 
 function productsDetails() {
-    fetchProducts().then(products => allProductToHtml(products));
+    fetchProducts().then(products => allProductToHtml(products, false));
 }
 
 function allButtons(products) {
     let buttons = document.querySelectorAll(".buttons");
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener("click", function (e) {
-            
             modalHtml(products[i]);
             modalJs(i + 1);
             document.getElementById('myModal').style.display = "block";

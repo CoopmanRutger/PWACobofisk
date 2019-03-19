@@ -32,7 +32,11 @@ function allProductToHtml(products, isLimited) {
         } else {
             result += productMaker(products[index], isLimited);
         }
+
         document.getElementById("products").innerHTML = result;
+    }
+    if (!isLimited) {
+        allButtons(products);
     }
 }
 
@@ -44,7 +48,7 @@ function productMaker({ id, name, amountMin, amountStock, color, merk, price, si
     <td>${color}</td>
     <td>€${price}</td>`
     if (!notExtra) {
-    result += `<td>${amountMin}</td>`
+        result += `<td>${amountMin}</td>`
     }
     result += `<td>${amountStock}</td>
     `
