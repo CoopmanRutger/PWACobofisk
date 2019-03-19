@@ -1,0 +1,19 @@
+* {
+
+}
+
+
+#form {
+    padding-top: 3%;
+    background-color: lightgrey;
+}
+
+
+label {
+    /* padding-top: 10%; */
+}
+
+.active {
+   font-weight: bold;
+    padding: 0.5%;
+}
