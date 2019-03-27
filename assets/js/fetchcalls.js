@@ -5,69 +5,90 @@ const header = {
         "Content-Type": "application/json",
     },
 };
+const headerPost = {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+    },
+}
 
-function FetchProducts(storeId){
+function FetchProducts(storeId) {
     url = `${domain}stores/products/${storeId}`
-    return fetch(url , header)
-    .then(function (response) {
-        return response.json();
-    })
-    .catch(function(error) {
-        console.log(JSON.stringify(error));
-      });
+    return fetch(url, header)
+        .then(function (response) {
+            return response.json();
+        })
+        .catch(function (error) {
+            console.log(JSON.stringify(error));
+        });
 }
 
-function FetchExpectedProducts(id){
+function FetchExpectedProducts(id) {
     url = `${domain}stores/deliverynotes/${id}`
-    return fetch(url , header)
-    .then(function (response) {
-        return response.json();
-    })
-    .catch(function(error) {
-        console.log(JSON.stringify(error));
-      });
+    return fetch(url, header)
+        .then(function (response) {
+            return response.json();
+        })
+        .catch(function (error) {
+            console.log(JSON.stringify(error));
+        });
 }
 
 
-function FetchEmployees(storeId){
-    url = `${domain}stores/employees/${storeId}` 
-    return fetch(url , header)
-    .then(function (response) {
-        return response.json();
-    })
-    .catch(function(error) {
-        console.log(JSON.stringify(error));
-      });
-}
-
-
-
-function FetchOrderformStandaard(storeId){
-    url = `${domain}products/orderform/${storeId}` 
-    return fetch(url , header)
-    .then(function (response) {
-        return response.json();
-    })
-    .catch(function(error) {
-        console.log(JSON.stringify(error));
-      });
+function FetchEmployees(storeId) {
+    url = `${domain}stores/employees/${storeId}`
+    return fetch(url, header)
+        .then(function (response) {
+            return response.json();
+        })
+        .catch(function (error) {
+            console.log(JSON.stringify(error));
+        });
 }
 
 
 
+function FetchOrderformStandaard(storeId) {
+    url = `${domain}products/orderform/${storeId}`
+    return fetch(url, header)
+        .then(function (response) {
+            return response.json();
+        })
+        .catch(function (error) {
+            console.log(JSON.stringify(error));
+        });
+}
 
 
-function FetchProductsById(id){
+
+
+
+function FetchProductsById(id) {
     url = `${domain}products/${id}`
-    return fetch(url , header)
-    .then(function (response) {
-        return response.json();
-    })
-    .catch(function(error) {
-        console.log(JSON.stringify(error));
-      });
+    return fetch(url, header)
+        .then(function (response) {
+            return response.json();
+        })
+        .catch(function (error) {
+            console.log(JSON.stringify(error));
+        });
 }
 
+
+function PostProductOrder(params) {
+    url = `${domain}products/${id}`
+    return fetch(url,{
+        method: "POST",
+        body: new FormData(document.getElementById('form'))
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .catch(function (error) {
+            console.log(JSON.stringify(error));
+        });
+
+}
 // fetch("https://local.project/Auth/register", {
 //         method: 'post',
 //         credentials: "same-origin",
@@ -75,13 +96,13 @@ function FetchProductsById(id){
 //       }).then(function(response){
 //             return response.json();
 //         })  .then(function(json){   
- 
+
 //           // change course
- 
+
 //         })
 //           .catch(function(error){
- 
- 
+
+
 //           });
 
 // fetch(url + "project/", header)

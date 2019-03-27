@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", init);
 function init() {
     FetchExpectedProducts(sessionStorage.getItem('storeId')).then(expectedProducts => AllExpectedProductsToHtml(expectedProducts, false));
     FetchProducts(sessionStorage.getItem('storeId')).then(products => ProductsToHtml(products));
+    FetchOrderformStandaard(sessionStorage.getItem('storeId')).then(products => applicationForm(products));
     
     
     name();
@@ -31,7 +32,15 @@ function ProductsToHtml(products) {
     for (let product of products) {
         result += OrderformProductmaker(product);
     }
-    document.getElementById("products").innerHTML = result;
+    document.getElementById("orderFormProducts").innerHTML = result;
+}
+
+function applicationForm(products) {
+    let result = "";
+    for (let product of products) {
+        result += OrderformProductmaker(product);
+    }
+    document.getElementById("applicationFormProducts").innerHTML = result;
 }
 
 function OrderformProductmaker({id, name, brand, size, color, amountMin, amountStock,}){
