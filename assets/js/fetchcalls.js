@@ -30,7 +30,7 @@ function FetchExpectedProducts(id){
 
 
 function FetchEmployees(storeId){
-    url = `${domain}stores/employees/${storeId}`  //todo: per winkel!
+    url = `${domain}stores/employees/${storeId}` 
     return fetch(url , header)
     .then(function (response) {
         return response.json();
@@ -39,6 +39,21 @@ function FetchEmployees(storeId){
         console.log(JSON.stringify(error));
       });
 }
+
+
+
+function FetchOrderformStandaard(storeId){
+    url = `${domain}products/orderform/${storeId}` 
+    return fetch(url , header)
+    .then(function (response) {
+        return response.json();
+    })
+    .catch(function(error) {
+        console.log(JSON.stringify(error));
+      });
+}
+
+
 
 
 

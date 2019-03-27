@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="assets/css/screen.css">
 </head>
 
-<body >
+<body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-danger">
             <a class="navbar-brand text-white" href="general.html">Algemeen</a>
@@ -38,7 +38,39 @@
         <div class="jumbotron">
             <h1 class="display-5">Verwachtte artikels</h1>
             <p class="lead">Alle verwachtte artikels van de winkel</p>
-            <div id="modal"></div>
+
+            <div id="orderformModal">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Bestelbon</h5>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-hover">
+                        <thead class="bg-danger modal-body">
+                            <tr>
+                                <th class="text-white">product id</th>
+                                <th class="text-white">naam</th>
+                                <th class="text-white">merk</th>
+                                <th class="text-white">maat</th>
+                                <th class="text-white">kleur</th>
+                                <th class="text-white">aantal</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products">
+
+                        </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger offset-0">Aanvraagformulier</button>
+                        <button type="button" class="btn btn-outline-danger col-2">Verzenden</button>
+                        <button type="button" class="btn btn-danger col-2" data-dismiss="modal">Annuleren</button>
+                    </div>
+                </div>
+
+            </div>
+
             <table class="table table-hover">
                 <thead class="bg-danger">
                     <tr>
@@ -48,14 +80,15 @@
                         <th class="text-white">verwachte datum</th>
                         <th class="text-white">bestel datum</th>
                         <th class="text-white">extra</th>
-                        <th class="text-white">link</th>
                     </tr>
                 </thead>
                 <tbody id="expectedProducts">
                 </tbody>
             </table>
             <p class="lead">
-                <a class="btn btn-primary btn-danger" href="#!" role="button">Some action</a>
+                <button class="btn btn-danger" id="orderform">
+                    Bestelbon maken
+                </button>
             </p>
         </div>
     </main>
