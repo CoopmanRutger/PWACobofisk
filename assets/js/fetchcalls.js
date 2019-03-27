@@ -6,21 +6,8 @@ const header = {
     },
 };
 
-function fetchProducts(){
-    url = `${domain}product/`
-    return fetch(url , header)
-    .then(function (response) {
-        return response.json();
-    })
-    .catch(function(error) {
-        console.log(JSON.stringify(error));
-      });
-
-}
-
-
-function fetchProductsById(id){
-    url = `${domain}product/${id}`
+function FetchProducts(storeId){
+    url = `${domain}stores/products/${storeId}`
     return fetch(url , header)
     .then(function (response) {
         return response.json();
@@ -30,8 +17,8 @@ function fetchProductsById(id){
       });
 }
 
-function fetchEmployee(storeId){
-    url = `${domain}employee/`  //todo: per winkel!
+function FetchExpectedProducts(id){
+    url = `${domain}stores/deliverynotes/${id}`
     return fetch(url , header)
     .then(function (response) {
         return response.json();
@@ -39,7 +26,31 @@ function fetchEmployee(storeId){
     .catch(function(error) {
         console.log(JSON.stringify(error));
       });
+}
 
+
+function FetchEmployees(storeId){
+    url = `${domain}stores/employees/${storeId}`  //todo: per winkel!
+    return fetch(url , header)
+    .then(function (response) {
+        return response.json();
+    })
+    .catch(function(error) {
+        console.log(JSON.stringify(error));
+      });
+}
+
+
+
+function FetchProductsById(id){
+    url = `${domain}products/${id}`
+    return fetch(url , header)
+    .then(function (response) {
+        return response.json();
+    })
+    .catch(function(error) {
+        console.log(JSON.stringify(error));
+      });
 }
 
 // fetch("https://local.project/Auth/register", {
