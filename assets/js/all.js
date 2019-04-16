@@ -48,7 +48,14 @@ function AllProductToHtml(products, isLimited) {
 }
 
 function ProductMaker({ id, name, amountMin, amountStock, color, brand, price, size }, notExtra) {
-    let result = `<tr><th scope="row">${id}</th>
+    let result = ``;
+
+    if (amountStock - amountMin < 0){
+        result += `<tr class="outOfStock">`;
+    } else {
+        result += `<tr>`;
+    }     
+    result += `<th scope="row">${id}</th>
     <td>${size}</td>
     <td>${name}</td>
     <td>${brand}</td>
@@ -106,3 +113,5 @@ function amountFunction(minStock, stock) {
     }
     return minStock - stock;
 }
+
+

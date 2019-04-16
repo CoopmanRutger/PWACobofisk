@@ -58,7 +58,7 @@ function ModalHtml({ id, name, amountMin, amountStock, color, description, brand
         <div class="modal-footer ">
         <form id="form" action="/products/update" methode="post">
         <label class="font-weight-bold" for="amount">aantal</label>
-        <input type="text" name="amount" readonly="readonly" placehouder="${amountFunction(amountMin, amountStock)}" value="${amountFunction(amountMin, amountStock)}"> 
+        <input type="text" name="amount" placehouder="0"> 
         <input class="btn btn-danger" type="submit" value="Add">
         <input class="btn btn-outline-danger" type="submit" value="Del">
         </form>
@@ -66,4 +66,3 @@ function ModalHtml({ id, name, amountMin, amountStock, color, description, brand
     </div>
     </div>`
 }
-
