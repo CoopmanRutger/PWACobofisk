@@ -17,3 +17,8 @@ label {
    font-weight: bold;
     padding: 0.5%;
 }
+
+.outOfStock {
+    background-color: black;
+    color: white;
+}
