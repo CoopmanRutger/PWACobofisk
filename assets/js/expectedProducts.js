@@ -124,11 +124,3 @@ function OrderformProductmaker({ id, name, brand, size, color, amountMin, amount
     }
     return '';
 }
-
-
-
-
-// function modal(){
-//     document.getElementById("orderformModal")= ``;
-// }
-

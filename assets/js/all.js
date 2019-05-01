@@ -88,7 +88,7 @@ function AllExpectedProductsToHtml(products, isLimited) {
         document.getElementById("expectedProducts").innerHTML = result;
     }
     if (!isLimited) {
-        clickedOnButton(products);
+        // clickedOnButton(products);
     }
 }
 
