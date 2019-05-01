@@ -1,50 +1,64 @@
 // werknemers
-function allEmployeeToHtml(employees, isLimited) {
+function AllEmployeeToHtml(employees, isLimited) {
     let result = "";
     for (let index in employees) {
 
         if (isLimited && index >= 5) {
         } else {
-            employees[index].employment = employees[index].function
-            result += employeeMaker(employees[index]);
+            result += EmployeeMaker(employees[index], isLimited);
         }
     };
     document.getElementById("employees").innerHTML = result;
 }
 
-function employeeMaker({ id, name, employment, username, age, created_at }) {
-    return `<tr><th scope="row">${id}</th>
-    <td>${name}</td>
-    <td>${age}</td>
-    <td>${username}</td>
-    <td>${employment}</td>
-    <td>${created_at}</td>
-</tr>`
+function EmployeeMaker({ id, name, duty, username, age, created_at }, notExtra) {
+    result = `<tr><th scope="row">${id}</th>
+    <td>${name}</td>`
+
+    if (!notExtra) {
+        result += `<td>${age}</td>
+        <td>${username}</td>`
+    }
+
+    result += `<td>${duty}</td>`
+
+    if (!notExtra) {
+        result += `<td>${created_at}</td>`
+    }
+
+    return result + `</tr>`
 }
 
 
 // products
-function allProductToHtml(products, isLimited) {
+function AllProductToHtml(products, isLimited) {
     let result = "";
     for (let index in products) {
 
         if (isLimited && index >= 5) {
         } else {
-            result += productMaker(products[index], isLimited);
+            result += ProductMaker(products[index], isLimited);
         }
 
         document.getElementById("products").innerHTML = result;
     }
     if (!isLimited) {
-        allButtons(products);
+        AllButtons(products);
     }
 }
 
-function productMaker({ id, name, amountMin, amountStock, color, merk, price, size }, notExtra) {
-    let result = `<tr><th scope="row">${id}</th>
+function ProductMaker({ id, name, amountMin, amountStock, color, brand, price, size }, notExtra) {
+    let result = ``;
+
+    if (amountStock - amountMin < 0){
+        result += `<tr class="outOfStock">`;
+    } else {
+        result += `<tr>`;
+    }     
+    result += `<th scope="row">${id}</th>
     <td>${size}</td>
     <td>${name}</td>
-    <td>${merk}</td>
+    <td>${brand}</td>
     <td>${color}</td>
     <td>€${price}</td>`
     if (!notExtra) {
@@ -60,3 +74,44 @@ function productMaker({ id, name, amountMin, amountStock, color, merk, price, si
     }
     return result + `</tr>`
 }
+
+
+ // Expected products
+function AllExpectedProductsToHtml(products, isLimited) {
+    let result = "";
+    for (let index in products) {
+
+        if (isLimited && index >= 5) {
+        } else {
+            result += ExpectedProductMaker(products[index], isLimited);
+        }
+        document.getElementById("expectedProducts").innerHTML = result;
+    }
+    if (!isLimited) {
+        // clickedOnButton(products);
+    }
+}
+
+function ExpectedProductMaker({ id, storeId, status, extra, productId, amount, date, created_at }, notExtra) {
+    let result = `<tr><th scope="row">${productId}</th>
+    <td>${amount}</td>
+    <td>${status}</td>
+    <td>${date}</td>`
+    
+    if (!notExtra) {
+        result += `
+        <td>${created_at}</td>
+        <td>${extra}</td>`
+    }
+    
+    return result + `</tr>`
+}
+
+function amountFunction(minStock, stock) {
+    if(minStock < stock) {
+        return 0;
+    }
+    return minStock - stock;
+}
+
+

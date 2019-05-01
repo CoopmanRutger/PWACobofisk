@@ -1,0 +1,16 @@
+{
+  "name": "Project",
+  "short_name": "Project",
+  "start_url": ".",
+  "lang": "nl",
+  "display": "standalone",
+  "background_color": "white",
+  "description": "my pwa project with laravel backend.",
+  "icons": [
+    {
+      "src": "assets/media/Cobofisk.jpg",
+      "sizes": "480x480",
+      "type": "image/jpg"
+    }
+  ]
+}
