@@ -76,7 +76,7 @@ function ProductMaker({ id, name, amountMin, amountStock, color, brand, price, s
 }
 
 
- // Expected products
+// Expected products
 function AllExpectedProductsToHtml(products, isLimited) {
     let result = "";
     for (let index in products) {
