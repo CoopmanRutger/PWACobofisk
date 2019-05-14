@@ -11,6 +11,13 @@ const headerPost = {
         "Content-Type": "application/json",
     },
 }
+const headerPUT = {
+    method: "PUT",
+    headers: {
+        "Content-Type": "application/json",
+    },
+}
+
 
 function FetchProducts(storeId) {
     url = `${domain}stores/products/${storeId}`
@@ -18,9 +25,9 @@ function FetchProducts(storeId) {
         .then(function (response) {
             return response.json();
         })
-        .catch(function (error) {
-            console.log(JSON.stringify(error));
-        });
+        // .catch(function (error) {
+        //     console.log(JSON.stringify(error));
+        // });
 }
 
 function FetchExpectedProducts(id) {
@@ -47,7 +54,6 @@ function FetchEmployees(storeId) {
 }
 
 
-
 function FetchOrderformStandaard(storeId) {
     url = `${domain}products/orderform/${storeId}`
     return fetch(url, header)
@@ -58,9 +64,6 @@ function FetchOrderformStandaard(storeId) {
             console.log(JSON.stringify(error));
         });
 }
-
-
-
 
 
 function FetchProductsById(id) {
@@ -87,31 +90,41 @@ function PostProductOrder(params) {
         .catch(function (error) {
             console.log(JSON.stringify(error));
         });
-
 }
-// fetch("https://local.project/Auth/register", {
-//         method: 'post',
-//         credentials: "same-origin",
-//         body: new FormData(document.getElementById('form'))
-//       }).then(function(response){
-//             return response.json();
-//         })  .then(function(json){   
-
-//           // change course
-
-//         })
-//           .catch(function(error){
 
 
-//           });
+function PostProductDelAmount(id, amount) {
+    let url = `${domain}products/${id}?_method=PUT`;
+    post(url, {amount:amount, choice:"Del"});
+}
 
-// fetch(url + "project/", header)
-//     .then((resp) => resp.json())
-//     .then(function (data) {
-//         console.log(data);
-//         let authors = data.results;
-//         console.log(authors)
-//     })
-//     .catch(function(error) {
-//         console.log(JSON.stringify(error));
-//       });   ;
+function PostProductAddAmount(id, amount) {
+    let url = `${domain}products/${id}?_method=PUT`;
+    post(url, {amount:amount, choice:"Add"});
+}
+
+function PostProductToDeliveryNote(params) {
+    url = `${domain}deliverynotes/add`;
+    post(url, params);
+}
+
+
+function post(path, params, method='post') {
+    const form = document.createElement('form');
+    form.method = method;
+    form.action = path;
+  
+    for (const key in params) {
+      if (params.hasOwnProperty(key)) {
+        const hiddenField = document.createElement('input');
+        hiddenField.type = 'hidden';
+        hiddenField.name = key;
+        hiddenField.value = params[key];
+  
+        form.appendChild(hiddenField);
+      }
+    }
+    // console.log(form);
+    document.body.appendChild(form);
+    form.submit();
+  }
