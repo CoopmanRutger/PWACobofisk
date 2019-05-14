@@ -27,7 +27,7 @@ const urlsToCache = [
   "/manifest.webmanifest"
 ];
 
-self.addEventListener("install", function(e) {
+self.addEventListener("install", function(event) {
   // Perform install steps
   event.waitUntil(
     caches.open(cacheName1)
