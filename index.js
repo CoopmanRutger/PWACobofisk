@@ -4,4 +4,4 @@ const app = express()
 
 app.use(express.static(__dirname))
 
-app.listen(5000 || env.process.PORT)
+app.listen(process.env.PORT || 5000)
