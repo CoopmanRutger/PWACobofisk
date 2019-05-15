@@ -108,6 +108,12 @@ function PostProductToDeliveryNote(params) {
     post(url, params);
 }
 
+function PostLogin(params) {
+    url = `${domain}employees/login`;
+    post(url, params);
+}
+
+
 
 function post(path, params, method='post') {
     const form = document.createElement('form');

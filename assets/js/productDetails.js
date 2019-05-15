@@ -18,8 +18,8 @@ function ModalJs() {
     let modal = document.getElementById('myModal');
     let span = document.getElementsByClassName("close")[0];
     
-    document.querySelector("input[value='Add']").addEventListener("click",clicked);
-    document.querySelector("input[value='Del']").addEventListener("click",clicked);
+    document.querySelector("input[value='Stock aangevuld']").addEventListener("click",clicked);
+    document.querySelector("input[value='Verkocht']").addEventListener("click",clicked);
 
     span.onclick = function () {
         modal.style.display = "none";
@@ -65,8 +65,8 @@ function ModalHtml({ id, name, amountMin, amountStock, color, description, brand
                     <label class="font-weight-bold" for="amount">aantal</label>
                     <input type="number" name="amount" placehouder="0" min="0" max="100"> 
                     </br>
-                    <input class="btn btn-danger" name=${id} value="Add">
-                    <input class="btn btn-outline-danger" name=${id} value="Del">
+                    <input class="btn btn-danger" name=${id} value="Stock aangevuld">
+                    <input class="btn btn-outline-danger" name=${id} value="Verkocht">
                 </form>
             </div>
         </div>
@@ -81,10 +81,10 @@ function clicked(){
 }
 
 function formsend(clicked, id , amount)  {
-    if(clicked == 'Add') {
+    if(clicked == 'Stock aangevuld') {
         PostProductAddAmount(id, amount);
     } 
-    if(clicked == 'Del') {
+    if(clicked == 'Verkocht') {
         PostProductDelAmount(id, amount);
     }
 }

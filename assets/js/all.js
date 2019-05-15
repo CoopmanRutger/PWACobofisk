@@ -50,11 +50,11 @@ function AllProductToHtml(products, isLimited) {
 function ProductMaker({ id, name, amountMin, amountStock, color, brand, price, size }, notExtra) {
     let result = ``;
 
-    if (amountStock - amountMin < 0){
+    if (amountStock - amountMin < 0) {
         result += `<tr class="outOfStock">`;
     } else {
         result += `<tr>`;
-    }     
+    }
     result += `<th scope="row">${id}</th>
     <td>${size}</td>
     <td>${name}</td>
@@ -76,7 +76,7 @@ function ProductMaker({ id, name, amountMin, amountStock, color, brand, price, s
 }
 
 
- // Expected products
+// Expected products
 function AllExpectedProductsToHtml(products, isLimited) {
     let result = "";
     for (let index in products) {
@@ -97,21 +97,22 @@ function ExpectedProductMaker({ id, storeId, status, extra, productId, amount, d
     <td>${amount}</td>
     <td>${status}</td>
     <td>${date}</td>`
-    
+
     if (!notExtra) {
         result += `
         <td>${created_at}</td>
         <td>${extra}</td>`
     }
-    
+
     return result + `</tr>`
 }
 
 function amountFunction(minStock, stock) {
-    if(minStock < stock) {
+    if (minStock < stock) {
         return 0;
     }
     return minStock - stock;
 }
+
 
 
