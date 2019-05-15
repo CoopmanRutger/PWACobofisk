@@ -1,5 +1,3 @@
-"use strict";
-
 const cacheName1 = "cacheName1";
 const urlsToCache = [
   "/",
