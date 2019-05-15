@@ -30,7 +30,7 @@ self.addEventListener("install", function(event) {
   event.waitUntil(
     caches.open(cacheName1)
       .then(function(cache) {
-        console.log('Opened cache');
+        console.log('Opened cache', cache);
         return cache.addAll(urlsToCache);
       })
   );
@@ -49,31 +49,31 @@ self.addEventListener("fetch", function(event) {
         if (!response || response.status !== 200 || response.type !== "basic") {
           return response;
         }
-
         // clone the response
         var responseToCache = response.clone();
 
         caches.open(cacheName1).then(function(cache) {
           cache.put(event.request, responseToCache);
         });
+        
         return response;
       });
     })
   );
 });
 
-self.addEventListener("activate", function(e) {
-  let cacheWhiteList = [cacheName1, "lol", "test"];
+// self.addEventListener("activate", function(e) {
+//   let cacheWhiteList = [cacheName1, "lol", "test"];
 
-  e.waitUntil(
-    caches.keys().then(function(cacheNames) {
-      Promise.all(
-        cacheNames.map(function(cacheName) {
-          if (cacheWhiteList.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  );
-});
+//   e.waitUntil(
+//     caches.keys().then(function(cacheNames) {
+//       Promise.all(
+//         cacheNames.map(function(cacheName) {
+//           if (cacheWhiteList.indexOf(cacheName) === -1) {
+//             return caches.delete(cacheName);
+//           }
+//         })
+//       );
+//     })
+//   );
+// });
