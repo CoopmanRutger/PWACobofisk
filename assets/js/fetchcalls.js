@@ -51,7 +51,7 @@ function PostRequest(url, params) {
           'Content-Type': 'application/json'
         }
     }).then(res => res);
-    // .then(res => res.json);
+    // .then(res => res.json);    
 }
 
 function PostProductDelAmount(id, amount) {
@@ -66,10 +66,10 @@ function PostProductAddAmount(id, amount) {
 
 function PostProductToDeliveryNote(params) {
     url = `${domain}deliverynotes/add`;
-    PostRequest(url, params);
+    return PostRequest(url, params);
 }
 
 function PostLogin(params) {
     url = `${domain}employees/login`;
-    PostRequest(url, params);
+    return PostRequest(url, params);
 }

@@ -1,25 +1,15 @@
 
-function ProductsDetails() {
-    FetchProducts(sessionStorage.getItem('storeId')).then(products => AllProductToHtml(products, false));
-}
+// function ProductsDetails() {
+//     FetchProducts(sessionStorage.getItem('storeId')).then(products => AllProductToHtml(products, false));
+// }
 
-function AllButtons(products) {
-    let buttons = document.querySelectorAll(".buttons");
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener("click", function (e) {
-            ModalHtml(products[i]);
-            ModalJs();
-            document.getElementById('myModal').style.display = "block";
-        });
-    }
-}
 
 function ModalJs() {
     let modal = document.getElementById('myModal');
     let span = document.getElementsByClassName("close")[0];
     
-    document.querySelector("input[value='Stock aangevuld']").addEventListener("click",clicked);
-    document.querySelector("input[value='Verkocht']").addEventListener("click",clicked);
+    document.querySelector("input[value='Stock aangevuld']").addEventListener("click",Clicked);
+    document.querySelector("input[value='Verkocht']").addEventListener("click",Clicked);
 
     span.onclick = function () {
         modal.style.display = "none";
@@ -91,24 +81,23 @@ function ModalTail() {
     return `</div></div>`
 }
 
-function clicked(){
+function Clicked(){
     let id = this.name
     let amount = this.form[0].value;
     let choise = this.value;
-    formsend(choise, id, amount);
+    Formsend(choise, id, amount);
 }
 
-function formsend(clicked, id , amount)  {
+function Formsend(clicked, id , amount)  {
     if(clicked == 'Stock aangevuld') {
-        PostProductAddAmount(id, amount).then(boolean => goTo(boolean));
+        PostProductAddAmount(id, amount).then(boolean => GoTo(boolean));
     } 
     if(clicked == 'Verkocht') {
-        PostProductDelAmount(id, amount).then(boolean => goTo(boolean));
+        PostProductDelAmount(id, amount).then(boolean => GoTo(boolean));
     }
 }
 
-
-function goTo(boolean) {
+function GoTo(boolean) {
     if (boolean) {
         window.location.href = "http://127.0.0.1:5500/products.html";
     }

@@ -2,44 +2,22 @@
 function AllEmployeeToHtml(employees, isLimited) {
     let result = "";
     for (let index in employees) {
-
         if (isLimited && index >= 5) {
         } else {
-            result += EmployeeMaker(employees[index], isLimited);
+            result += EmployeeRowMaker(employees[index], isLimited);
         }
     };
     document.getElementById("employees").innerHTML = result;
 }
 
-function EmployeeMaker({ id, name, duty, username, age, created_at }, notExtra) {
-    result = `<tr><th scope="row">${id}</th>
-    <td>${name}</td>`
-
-    if (!notExtra) {
-        result += `<td>${age}</td>
-        <td>${username}</td>`
-    }
-
-    result += `<td>${duty}</td>`
-
-    if (!notExtra) {
-        result += `<td>${created_at}</td>`
-    }
-
-    return result + `</tr>`
-}
-
-
 // products
 function AllProductToHtml(products, isLimited) {
     let result = "";
     for (let index in products) {
-
         if (isLimited && index >= 5) {
         } else {
-            result += ProductMaker(products[index], isLimited);
+            result += ProductRowMaker(products[index], isLimited);
         }
-
         document.getElementById("products").innerHTML = result;
     }
     if (!isLimited) {
@@ -47,64 +25,85 @@ function AllProductToHtml(products, isLimited) {
     }
 }
 
-function ProductMaker({ id, name, amountMin, amountStock, color, brand, price, size }, notExtra) {
-    let result = ``;
-
-    if (amountStock - amountMin < 0) {
-        result += `<tr class="outOfStock">`;
-    } else {
-        result += `<tr>`;
-    }
-    result += `<th scope="row">${id}</th>
-    <td>${size}</td>
-    <td>${name}</td>
-    <td>${brand}</td>
-    <td>${color}</td>
-    <td>€${price}</td>`
-    if (!notExtra) {
-        result += `<td>${amountMin}</td>`
-    }
-    result += `<td>${amountStock}</td>
-    `
-    if (!notExtra) {
-        result += `<td>${amountStock - amountMin}</td>
-        <td><button id="myBtn${id}" type="button" class="buttons btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">
-        link</button>
-        </td>`
-    }
-    return result + `</tr>`
-}
-
-
 // Expected products
 function AllExpectedProductsToHtml(products, isLimited) {
     let result = "";
     for (let index in products) {
-
         if (isLimited && index >= 5) {
         } else {
-            result += ExpectedProductMaker(products[index], isLimited);
+            result += ExpectedProductRowMaker(products[index], isLimited);
         }
         document.getElementById("expectedProducts").innerHTML = result;
     }
-    if (!isLimited) {
-        // clickedOnButton(products);
+}
+
+// rowMakers
+function EmployeeRowMaker({ id, name, duty, username, age, created_at }, notExtra) {
+    return result = th(id) 
+        + td(name)
+        + NotExtra(notExtra, age) 
+        + NotExtra(notExtra, username)
+        + td(duty)
+        + NotExtra(notExtra, created_at)
+        + `</tr>`;
+}
+
+function ProductRowMaker({ id, name, amountMin, amountStock, color, brand, price, size }, notExtra) {
+    return OutOfStockClass(amountStock, amountMin)
+        + th(id)
+        + td(size)
+        + td(name)
+        + td(brand)
+        + td(color)
+        + td('€' + price)
+        + NotExtra(notExtra, amountMin)
+        + td(amountStock)
+        + NotExtra(notExtra, amountStock-amountMin)
+        + NotExtraButton(notExtra,id)
+        + `</tr>`   
+}
+
+function ExpectedProductRowMaker({status, extra, productId, amount, date, created_at }, notExtra) {
+    return `<tr>` 
+    + th(productId)
+    + td(amount)
+    + td(status)
+    + td(date)
+    + NotExtra(notExtra, created_at)
+    + NotExtra(notExtra, extra)
+    + `</tr>`
+}
+
+// algemeen
+function OutOfStockClass(amountStock, amountMin) {
+    if (amountStock - amountMin < 0) {
+        return `<tr class="outOfStock">`;
+    } else {
+        return `<tr>`;
     }
 }
 
-function ExpectedProductMaker({ id, storeId, status, extra, productId, amount, date, created_at }, notExtra) {
-    let result = `<tr><th scope="row">${productId}</th>
-    <td>${amount}</td>
-    <td>${status}</td>
-    <td>${date}</td>`
-
-    if (!notExtra) {
-        result += `
-        <td>${created_at}</td>
-        <td>${extra}</td>`
+function NotExtraButton (boolean, text) {
+    if (!boolean) {
+        return  `<td><button id="myBtn${text}" type="button" class="buttons btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">
+        link</button>
+        </td>`;
     }
+    return '';
+}
 
-    return result + `</tr>`
+function NotExtra(boolean, text) {
+    if (!boolean)
+        return td(text);
+    return "";
+}
+
+function td(text) {
+    return `<td>${text}</td>`
+}
+
+function th(text) {
+    return `<th scope="row">${text}</th>`
 }
 
 function amountFunction(minStock, stock) {
@@ -113,6 +112,3 @@ function amountFunction(minStock, stock) {
     }
     return minStock - stock;
 }
-
-
-
