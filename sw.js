@@ -14,7 +14,6 @@ const urlsToCache = [
   "/assets/js/expectedProducts.js",
   "/assets/js/fetchcalls.js",
   "/assets/js/general.js",
-  "/assets/js/index.js",
   "/assets/js/makeOrderForm.js",
   "/assets/js/productDetails.js",
   "/assets/js/products.js",
