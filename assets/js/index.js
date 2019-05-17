@@ -5,20 +5,24 @@ document.addEventListener("DOMContentLoaded", init);
 function init() {
     sessionStorage.setItem('storeId', 1);
     console.log(sessionStorage.getItem('storeId'));
-   registerSW();
-  document.querySelector("#login").addEventListener("click",clicked);
-};
-
-
-function clicked() {
-  console.log('click');
-  let username = document.querySelector("#username").value;
-  let password = document.querySelector("#password").value;
-
-  console.log(username);
-  console.log(password);
-
-  PostLogin({ username: username, password: password})
+    document.querySelector("#login").addEventListener("click",clicked);
+    // registerSW();
+  };
+  
+  
+  function clicked() {
+    let username = document.querySelector("#username").value;
+    let password = document.querySelector("#password").value;
+    
+    let id = PostLogin({ username: username, password: password})
+    console.log(id);
+    // if (id != 0) {
+      // sessionStorage.setItem('id', id);
+      // console.log(sessionStorage.getItem('id'));
+    // window.location.href = "http://127.0.0.1:5500/general.html";
+  // } else {
+    // window.location.href = "http://127.0.0.1:5500/indexW.html";
+  // }
 }
 
 function registerSW() {
