@@ -1,12 +1,9 @@
 "use strict";
 
-let params = [];
-
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
     let storeId = sessionStorage.getItem('storeId')
-
     console.log({storeId})
 
     FetchProducts(sessionStorage.getItem('storeId')).then(products => ProductsToHtml(products));
@@ -59,14 +56,10 @@ function getIdAndAmountOfTheProducts(id) {
     
     for (const product of products) {
         let aProduct = {}; 
-        
         aProduct.id = product.children[0].innerHTML;
         aProduct.amount = product.children[5].innerHTML;
         aProduct.storeId = sessionStorage.getItem('storeId');
-
-        params.push(aProduct);
         
-        console.log(aProduct);
         PostProductToDeliveryNote(aProduct);
     }
 }
