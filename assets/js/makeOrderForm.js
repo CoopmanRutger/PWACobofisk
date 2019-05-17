@@ -22,7 +22,7 @@ function ProductsToHtml(products) {
 function applicationForm(products) {
     let result = "";
     for (let product of products) {
-        result += OrderformProductmaker2(product);
+        result += ApplicationFormProductmaker(product);
     }
     document.getElementById("applicationFormProducts").innerHTML = result;
 }
@@ -41,17 +41,17 @@ function OrderformProductmaker({ id, name, brand, size, color, amountMin, amount
     return '';
 }
 
-function OrderformProductmaker2({ id, name, brand, size, color, amountMin, amountStock, }) {
-        return `<tr><th scope="row">${id}</th>
+function ApplicationFormProductmaker({ productId, name, brand, size, color, amount}) {
+        return `<tr><th scope="row">${productId}</th>
         <td>${name}</td>
         <td>${brand}</td>
         <td>${size}</td>
         <td>${color}</td>
-        <td>${amountFunction(amountMin, amountStock)}</td>
+        <td>${amount}</td>
         </tr>`
 }
 
-function getIdAndAmountOfTheProducts(id) {
+function getIdAndAmountOfTheProducts(id, boolean) {
     let products = document.getElementById(id).children;
     
     for (const product of products) {
@@ -59,6 +59,12 @@ function getIdAndAmountOfTheProducts(id) {
         aProduct.id = product.children[0].innerHTML;
         aProduct.amount = product.children[5].innerHTML;
         aProduct.storeId = sessionStorage.getItem('storeId');
+        if(boolean){
+            aProduct.extra = "AUTOMATISCHE BESTELLING (min stock)";
+        }else {
+            aProduct.extra = document.getElementById("choice").value.toUpperCase() +': '
+            + document.getElementById("extra").value;
+        }
         
         PostProductToDeliveryNote(aProduct);
     }
@@ -67,6 +73,16 @@ function getIdAndAmountOfTheProducts(id) {
 
 function clickedOnSend() {
     console.log("clicked");
-    getIdAndAmountOfTheProducts("orderFormProducts");
-    getIdAndAmountOfTheProducts("applicationFormProducts");
+    let promise1 = new Promise(function(resolve, reject ) {
+        getIdAndAmountOfTheProducts("orderFormProducts", true)});
+    let promise2 = new Promise(function(resole, reject ) {
+        getIdAndAmountOfTheProducts("applicationFormProducts", false)});
+    // var promise3 = new Promise(function(resolve, reject) {
+    //     setTimeout(resolve, 100, 'foo');
+
+    Promise.all([promise1, promise2]).then(goTo);       
+}
+
+function goTo() {
+    window.location.href = "http://127.0.0.1:5500/orderForms.html";
 }
