@@ -6,7 +6,7 @@ function init() {
     sessionStorage.setItem('storeId', 1);
     console.log(sessionStorage.getItem('storeId'));
     document.querySelector("#login").addEventListener("click",clicked);
-    // registerSW();
+    registerSW();
   };
   
   
