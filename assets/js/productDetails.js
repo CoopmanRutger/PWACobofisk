@@ -1,9 +1,3 @@
-
-// function ProductsDetails() {
-//     FetchProducts(sessionStorage.getItem('storeId')).then(products => AllProductToHtml(products, false));
-// }
-
-
 function ModalJs() {
     let modal = document.getElementById('myModal');
     let span = document.getElementsByClassName("close")[0];

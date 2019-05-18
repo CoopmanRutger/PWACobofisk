@@ -106,7 +106,7 @@ function th(text) {
     return `<th scope="row">${text}</th>`
 }
 
-function amountFunction(minStock, stock) {
+function AmountFunction(minStock, stock) {
     if (minStock < stock) {
         return 0;
     }

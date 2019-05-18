@@ -13,7 +13,7 @@ function init() {
 function ProductsToHtml(products) {
     let result = "";
     for (let product of products) {
-        result += OrderformProductRowmaker(product);
+        result += OrderformProductRowMaker(product);
     }
     document.getElementById("orderFormProducts").innerHTML = result;
 }
@@ -21,32 +21,33 @@ function ProductsToHtml(products) {
 function ApplicationForm(products) {
     let result = "";
     for (let product of products) {
-        result += ApplicationFormProductRowmaker(product);
+        result += ApplicationFormProductRowMaker(product);
     }
     document.getElementById("applicationFormProducts").innerHTML = result;
 }
 
-function OrderformProductRowmaker({ id, name, brand, size, color, amountMin, amountStock, }) {
+function OrderformProductRowMaker({ id, name, brand, size, color, amountMin, amountStock, }) {
     // todo
-    if (amountFunction(amountMin, amountStock) > 0) {
+    if (AmountFunction(amountMin, amountStock) > 0) {
         return `<tr>`
         + th(id)
+        + td(size)
         + td(name)
         + td(brand) 
-        + td(size)
         + td(color)
-        + td(amountFunction(amountMin, amountStock)) 
+        + td(AmountFunction(amountMin, amountStock)) 
         + `</tr>`
     }
     return '';
 }
 
-function ApplicationFormProductRowmaker({ productId, name, brand, size, color, amount}) {
+function ApplicationFormProductRowMaker({ productId, name, brand, size, color, amount}) {
+    // todo
         return `<tr>`
         + th(productId)
+        + td(size)
         + td(name)
         + td(brand)
-        + td(size)
         + td(color)
         + td(amount)
         + `</tr>`
