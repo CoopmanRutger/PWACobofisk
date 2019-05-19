@@ -3,6 +3,7 @@
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
-    FetchExpectedProducts(sessionStorage.getItem('storeId')).then(expectedProducts => AllExpectedProductsToHtml(expectedProducts, false));
+    let storeId = sessionStorage.getItem('storeId');
+    FetchExpectedProducts(storeId).then(expectedProducts => AllExpectedProductsToHtml(expectedProducts, false));
 };
 
