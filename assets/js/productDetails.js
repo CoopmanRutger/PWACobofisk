@@ -55,7 +55,7 @@ function ModalMiddle({ id, name, amountMin, amountStock, color, description, bra
     <p class="col-4 font-weight-bold">Verschil: <span class="font-weight-normal">${amountStock - amountMin}</span></p>
     <p class="col-12 font-weight-bold">Omschrijving: <span class="font-weight-normal">${description}</span></p>
     <img class="col-12 img-fluid" src="assets/media/${picture}.jpg" alt="product${id}">
-    <p class="font-weight-bold offset-4" >aantal dat besteld word: ${amountFunction(amountMin, amountStock)}<p>
+    <p class="font-weight-bold offset-4" >aantal dat besteld word: ${AmountFunction(amountMin, amountStock)}<p>
     </div>`
 }
 

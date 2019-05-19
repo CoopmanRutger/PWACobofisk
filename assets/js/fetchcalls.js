@@ -69,7 +69,7 @@ function PostProductToDeliveryNote(params) {
     return PostRequest(url, params);
 }
 
-function PostLogin(params) {
+function PostLogin(username, password) {
     url = `${domain}employees/login`;
-    return PostRequest(url, params);
+    return PostRequest(url, {username: username, password: password});
 }
