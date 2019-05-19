@@ -4,10 +4,8 @@ document.addEventListener("DOMContentLoaded", init);
 
 function init() {
     sessionStorage.setItem('storeId', 1);
-  
     document.querySelector("#login").addEventListener("click",clicked);
-  };
-  // // RegisterSW();
+    RegisterSW();
 }
 
 function Clicked() {
@@ -28,12 +26,12 @@ function WelWel(id) {
   }
 }
 
-// function RegisterSW() {
-//     if ('serviceWorker' in navigator) {
-//         navigator.serviceWorker.register("/sw.js").then(function(res) {
-//             console.log("Successfully registered service worker with scope: ", res.scope);
-//         }).catch(function(err) {
-//             console.log("Error registering service worker ", err);
-//         })
-//     }
-// }
+function RegisterSW() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register("/sw.js").then(function(res) {
+            console.log("Successfully registered service worker with scope: ", res.scope);
+        }).catch(function(err) {
+            console.log("Error registering service worker ", err);
+        })
+    }
+}
