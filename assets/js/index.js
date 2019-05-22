@@ -3,26 +3,25 @@
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
-    sessionStorage.setItem('storeId', 1);
-    document.querySelector("#login").addEventListener("click",clicked);
+    document.querySelector("#login").addEventListener("click", Clicked);
+    document.querySelector("#warning").classList.add("hide");
     RegisterSW();
 }
 
-function Clicked() {
+function Clicked(e) {
+  e.preventDefault();
   let username = document.querySelector("#username").value;
   let password = document.querySelector("#password").value;
 
-  PostLogin(username, password).then(id => console.log(id));
+  PostLogin(username, password).then(id => id.text()).then(res => WelWel(res));
 }
 
 function WelWel(id) {
-  console.log(id);
   if (id != 0) {
     sessionStorage.setItem("id", id);
-    console.log(sessionStorage.getItem("id"));
     window.location.href = "http://127.0.0.1:5500/general.html";
   } else {
-    window.location.href = "http://127.0.0.1:5500/index.html";
+    document.getElementById("warning").classList.remove("hide");
   }
 }
 
