@@ -13,10 +13,10 @@ function Clicked(e) {
   let username = document.querySelector("#username").value;
   let password = document.querySelector("#password").value;
 
-  PostLogin(username, password).then(id => id.text()).then(res => WelWel(res));
+  PostLogin(username, password).then(id => id.text()).then(res => CorrectLogin(res));
 }
 
-function WelWel(id) {
+function CorrectLogin(id) {
   if (id != 0) {
     sessionStorage.setItem("id", id);
     window.location.href = "http://127.0.0.1:5500/general.html";

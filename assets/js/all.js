@@ -68,7 +68,6 @@ function ProductRowMaker(
     NotExtra(notExtra, amountMin) +
     td(amountStock) +
     NotExtra(notExtra, amountStock - amountMin) +
-    // NotExtraButton(notExtra, id) +
     NotExtra(notExtra, button(id)) +
     `</tr>`
   );
@@ -93,15 +92,6 @@ function OutOfStockClass(amountStock, amountMin) {
   } else {
     return `<tr>`;
   }
-}
-
-function NotExtraButton(boolean, text) {
-  if (!boolean) {
-    return `
-        <td>
-        </td>`;
-  }
-  return "";
 }
 
 function button(text) {
