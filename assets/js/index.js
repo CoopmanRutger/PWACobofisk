@@ -16,9 +16,9 @@ function Clicked(e) {
   PostLogin(username, password).then(id => id.text()).then(res => CorrectLogin(res));
 }
 
-function CorrectLogin(id) {
-  if (id != 0) {
-    sessionStorage.setItem("id", id);
+function CorrectLogin(storeId) {
+  if (storeId != 0) {
+    sessionStorage.setItem("storeId", storeId);
     window.location.href = "http://127.0.0.1:5500/general.html";
   } else {
     document.getElementById("warning").classList.remove("hide");
